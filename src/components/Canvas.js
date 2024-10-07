@@ -28,7 +28,7 @@ function Canvas({
           // Dibujar el objeto
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.beginPath();
-          ctx.arc(100, 400 - (nuevaPosicion / alturaInicial) * 500, 20, 0, Math.PI * 2);
+          ctx.arc(100, 400 - (nuevaPosicion / alturaInicial) * 400, 20, 0, Math.PI * 2);
           ctx.fillStyle = 'red';
           ctx.fill();
           ctx.closePath();

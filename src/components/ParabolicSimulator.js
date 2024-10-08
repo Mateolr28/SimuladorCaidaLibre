@@ -10,6 +10,7 @@ function ParabolicSimulator({ regresar }) {
   const [tiempo, setTiempo] = useState(0);
   const [posicionX, setPosicionX] = useState(0);
   const [posicionY, setPosicionY] = useState(0);
+  const [alturaInicial, setAlturaInicial] = useState(0); // Estado para la altura inicial
   const [caidaIniciada, setCaidaIniciada] = useState(false);
   const [pausado, setPausado] = useState(false);
 
@@ -29,7 +30,7 @@ function ParabolicSimulator({ regresar }) {
   const reiniciarSimulacion = () => {
     setTiempo(0);
     setPosicionX(0);
-    setPosicionY(0);
+    setPosicionY(alturaInicial); // Reiniciar la posición Y con la altura inicial
     setCaidaIniciada(false);
     setPausado(false);
   };
@@ -40,8 +41,8 @@ function ParabolicSimulator({ regresar }) {
       <button onClick={regresar}>Regresar</button>
 
       <Controls
-        alturaInicial={0} // No aplica aquí, puedes ajustar según lo que necesites
-        setAlturaInicial={() => {}}
+        alturaInicial={alturaInicial}
+        setAlturaInicial={setAlturaInicial}
         gravedad={9.81}
         setGravedad={() => {}}
         iniciarCaida={iniciarMovimiento}
@@ -66,6 +67,7 @@ function ParabolicSimulator({ regresar }) {
         pausado={pausado}
         posicionX={posicionX}
         posicionY={posicionY}
+        alturaInicial={alturaInicial} // Pasar la altura inicial al canvas
       />
 
       <Results

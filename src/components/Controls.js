@@ -10,11 +10,19 @@ function Controls({
         <>
           <label>
             Altura Inicial (m):
-            <input type="number" value={alturaInicial} onChange={(e) => setAlturaInicial(e.target.value)} />
+            <input
+              type="number"
+              value={alturaInicial}
+              onChange={(e) => setAlturaInicial(parseFloat(e.target.value) || 0)} // Conversión a número
+            />
           </label>
           <label>
             Gravedad (m/s²):
-            <input type="number" value={gravedad} onChange={(e) => setGravedad(e.target.value)} />
+            <input
+              type="number"
+              value={gravedad}
+              onChange={(e) => setGravedad(parseFloat(e.target.value) || 0)} // Conversión a número
+            />
           </label>
         </>
       )}
@@ -22,11 +30,19 @@ function Controls({
         <>
           <label>
             Velocidad Inicial (m/s):
-            <input type="number" value={velocidadInicial} onChange={(e) => setVelocidadInicial(e.target.value)} />
+            <input
+              type="number"
+              value={velocidadInicial}
+              onChange={(e) => setVelocidadInicial(parseFloat(e.target.value) || 0)} // Conversión a número
+            />
           </label>
           <label>
             Ángulo (°):
-            <input type="number" value={angulo} onChange={(e) => setAngulo(e.target.value)} />
+            <input
+              type="number"
+              value={angulo}
+              onChange={(e) => setAngulo(parseFloat(e.target.value) || 0)} // Conversión a número
+            />
           </label>
         </>
       )}

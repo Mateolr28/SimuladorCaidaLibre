@@ -1,0 +1,30 @@
+/* src/components/styles/FreeFallSimulator.css */
+
+.simulator-container {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    border: 1px solid black;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .falling-object {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    transition: top 0.1s linear;
+  }
+  
+  .link-button {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  

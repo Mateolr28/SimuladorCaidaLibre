@@ -14,12 +14,13 @@ function Canvas({
       interval = setInterval(() => {
         setTiempo((prevTiempo) => {
           const nuevoTiempo = prevTiempo + 0.1;
-          const nuevaPosicion = alturaInicial - 0.5 * gravedad * Math.pow(nuevoTiempo, 2);
+          const nuevaPosicion = alturaInicial - (0.5 * gravedad * Math.pow(nuevoTiempo, 2));
 
+          // Si el objeto toca el suelo
           if (nuevaPosicion <= 0) {
             clearInterval(interval);
             setPosicion(0);
-            setVelocidadFinal(Math.sqrt(2 * gravedad * alturaInicial));
+            setVelocidadFinal(0);
           } else {
             setPosicion(nuevaPosicion);
             setVelocidadFinal(gravedad * nuevoTiempo);
@@ -28,7 +29,7 @@ function Canvas({
           // Dibujar el objeto
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.beginPath();
-          ctx.arc(100, 400 - (nuevaPosicion / alturaInicial) * 400, 20, 0, Math.PI * 2);
+          ctx.arc(400, canvas.height - nuevaPosicion, 5, 0, Math.PI * 2);
           ctx.fillStyle = 'red';
           ctx.fill();
           ctx.closePath();
@@ -38,14 +39,12 @@ function Canvas({
       }, 100);
     }
 
-    return () => clearInterval(interval);
-  }, [caidaIniciada, pausado, gravedad, alturaInicial, setTiempo, setPosicion, setVelocidadFinal]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [caidaIniciada, pausado, alturaInicial, gravedad, setPosicion, setVelocidadFinal]);
 
-  return (
-    <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
-      <canvas ref={canvasRef} width="200" height="400" style={{ border: '1px solid black' }}></canvas>
-    </div>
-  );
+  return <canvas ref={canvasRef} width={800} height={400} style={{ border: '1px solid black' }} />;
 }
 
 export default Canvas;

@@ -2,11 +2,11 @@ import React from 'react';
 
 function Results({ tiempo, velocidadFinal, posicion }) {
   return (
-    <div>
+    <div className="results">
       <h2>Resultados</h2>
-      <p><strong>Tiempo:</strong> {tiempo.toFixed(2)} s</p>
-      <p><strong>Velocidad Final:</strong> {velocidadFinal.toFixed(2)} m/s</p>
-      <p><strong>Altura Actual:</strong> {posicion.toFixed(2)} m</p>
+      <p>Tiempo (s): {tiempo.toFixed(2)}</p>
+      <p>Velocidad Final (m/s): {velocidadFinal.toFixed(2)}</p>
+      <p>Posición (m): {posicion.toFixed(2)}</p>
     </div>
   );
 }

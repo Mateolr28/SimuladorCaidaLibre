@@ -1,75 +1,28 @@
 import React, { useState } from 'react';
-import Canvas from './components/Canvas';
-import Controls from './components/Controls';
-import Results from './components/Results';
-import './styles/App.css';
+import MainPage from './components/MainPage';
+import FreeFallSimulator from './components/FreeFallSimulator'; // Importar el simulador de caída libre
+import ParabolicSimulator from './components/ParabolicSimulator'; // Importar el simulador de movimiento parabólico
 
 function App() {
-  const [alturaInicial, setAlturaInicial] = useState(100);
-  const [gravedad, setGravedad] = useState(9.81);
-  const [tiempo, setTiempo] = useState(0);
-  const [velocidadFinal, setVelocidadFinal] = useState(0);
-  const [posicion, setPosicion] = useState(alturaInicial);
-  const [caidaIniciada, setCaidaIniciada] = useState(false);
-  const [pausado, setPausado] = useState(false);
+  const [simuladorSeleccionado, setSimuladorSeleccionado] = useState(null);
 
-  // Función para iniciar/reanudar la caída
-  const iniciarCaida = () => {
-    if (pausado) {
-      setPausado(false);  // Reanudar si estaba en pausa
-    } else {
-      setCaidaIniciada(true);
-    }
+  const mostrarSimulador = (tipo) => {
+    setSimuladorSeleccionado(tipo);
   };
 
-  // Función para pausar la simulación
-  const pausarSimulacion = () => {
-    setPausado(true);
-    setCaidaIniciada(false);
-  };
-
-  // Función para reiniciar la simulación
-  const reiniciarSimulacion = () => {
-    setTiempo(0);
-    setVelocidadFinal(0);
-    setPosicion(alturaInicial);
-    setCaidaIniciada(false);
-    setPausado(false);
+  const regresar = () => {
+    setSimuladorSeleccionado(null);
   };
 
   return (
     <div className="App">
-      <h1>Simulador de Caída Libre</h1>
-      
-      <Controls
-        alturaInicial={alturaInicial}
-        setAlturaInicial={setAlturaInicial}
-        gravedad={gravedad}
-        setGravedad={setGravedad}
-        iniciarCaida={iniciarCaida}
-        reiniciarSimulacion={reiniciarSimulacion}
-        caidaIniciada={caidaIniciada}
-        pausado={pausado}
-        pausarSimulacion={pausarSimulacion}
-      />
-      
-      <Canvas
-        alturaInicial={alturaInicial}
-        gravedad={gravedad}
-        tiempo={tiempo}
-        setTiempo={setTiempo}
-        setPosicion={setPosicion}
-        setVelocidadFinal={setVelocidadFinal}
-        posicion={posicion}
-        caidaIniciada={caidaIniciada}
-        pausado={pausado}
-      />
-      
-      <Results
-        tiempo={tiempo}
-        velocidadFinal={velocidadFinal}
-        posicion={posicion}
-      />
+      {!simuladorSeleccionado ? (
+        <MainPage mostrarSimulador={mostrarSimulador} />
+      ) : simuladorSeleccionado === 'caidaLibre' ? (
+        <FreeFallSimulator regresar={regresar} />
+      ) : (
+        <ParabolicSimulator regresar={regresar} />
+      )}
     </div>
   );
 }

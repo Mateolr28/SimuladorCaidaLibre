@@ -44,7 +44,7 @@ function Canvas({
     };
   }, [caidaIniciada, pausado, alturaInicial, gravedad, setPosicion, setVelocidadFinal]);
 
-  return <canvas ref={canvasRef} width={800} height={400} style={{ border: '1px solid black' }} />;
+  return <canvas ref={canvasRef} width={800} height={400} style={{ border: '1px solid black' }} />; //Cuadro
 }
 
 export default Canvas;

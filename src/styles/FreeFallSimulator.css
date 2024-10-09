@@ -1,30 +1,27 @@
-/* src/components/styles/FreeFallSimulator.css */
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
 
-.simulator-container {
-    position: relative;
-    width: 300px;
-    height: 500px;
-    border: 1px solid black;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .falling-object {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    border-radius: 50%;
-    transition: top 0.1s linear;
-  }
-  
-  .link-button {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #007BFF;
-    color: #FFF;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
+button {
+  margin: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+.results {
+  margin-top: 20px;
+}

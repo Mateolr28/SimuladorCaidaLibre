@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ParabolicCanvas from './ParabolicCanvas';
 import Controls from './Controls';
 import Results from './Results';
-import '../styles/App.css';
+import '../styles/ParabolicSimulator.css';
 
 function ParabolicSimulator({ regresar }) {
   const [velocidadInicial, setVelocidadInicial] = useState(50);

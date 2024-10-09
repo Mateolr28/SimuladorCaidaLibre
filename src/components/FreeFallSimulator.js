@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Canvas from './Canvas';
 import Controls from './Controls';
 import Results from './Results';
-import '../styles/App.css';
+import '../styles/FreeFallSimulator.css';
 
 function FreeFallSimulator({ regresar }) {
   const [alturaInicial, setAlturaInicial] = useState(100);
